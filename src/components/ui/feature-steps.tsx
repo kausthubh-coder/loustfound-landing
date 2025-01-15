@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -84,14 +84,18 @@ export function FeatureSteps({
             ))}
           </div>
 
-          <div className={cn("order-1 md:order-2 relative", imageHeight, "overflow-hidden rounded-lg")}>
+          <div className={cn(
+            "order-1 md:order-2 relative",
+            imageHeight,
+            "overflow-hidden rounded-lg md:flex md:items-center md:justify-center"
+          )}>
             <AnimatePresence mode="wait">
               {features.map(
                 (feature, index) =>
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0 rounded-lg overflow-hidden"
+                      className="absolute inset-0 rounded-lg overflow-hidden md:relative md:w-full md:h-full"
                       initial={{ y: 100, opacity: 0, rotateX: -20 }}
                       animate={{ y: 0, opacity: 1, rotateX: 0 }}
                       exit={{ y: -100, opacity: 0, rotateX: 20 }}
@@ -100,11 +104,11 @@ export function FeatureSteps({
                       <img
                         src={feature.image}
                         alt={feature.step}
-                        className="w-full h-full object-cover transition-transform transform"
+                        className="w-full h-full object-cover md:object-contain transition-transform transform"
                       />
                       <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
                     </motion.div>
-                  ),
+                  )
               )}
             </AnimatePresence>
           </div>

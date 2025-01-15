@@ -1,34 +1,29 @@
 "use client";
 
-import { ArrowRight, BellIcon } from "lucide-react";
+import { BellIcon } from "lucide-react";
 
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { ConfettiButton } from "@/components/ui/confetti";
-import HeroVideoDialog from "@/components/ui/hero-video-dialog";
-import { IconCloud } from "@/components/ui/icon-cloud";
 import Iphone15Pro from "@/components/ui/iphone-15-pro";
 import MorphingText from "@/components/ui/morphing-text";
-import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
-import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import RetroGrid from "@/components/ui/retro-grid";
-import Ripple from "@/components/ui/ripple";
 import ScrollProgress from "@/components/ui/scroll-progress";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { WarpBackground } from "@/components/ui/warp-background";
 import WordRotate from "@/components/ui/word-rotate";
-import { MapIcon, MessageIcon, DashboardIcon } from "@/components/icons";
+import { MapIcon, DashboardIcon } from "@/components/icons";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { cn } from "@/lib/utils";
 import { FeatureSteps } from "@/components/ui/feature-steps";
 
-import mapgif from '../assets/mapgif.gif'
-import reportImage from '../assets/reportitem.png'
-import trackImage from '../assets/dashbaord-track.png'
-import connectImage from '../assets/messages.png'
-import dashboardImage from '../assets/dashbaord-featires.png'
+import mapgif from '../assets/mapgif.gif';
+import reportImage from '../assets/reportitem.png';
+import trackImage from '../assets/dashbaord-track.png';
+import connectImage from '../assets/messages.png';
+import dashboardImage from '../assets/dashbaord-featires.png';
 
 interface Item {
   name: string;
@@ -141,7 +136,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh]">
         <WarpBackground>
-          <div className="mx-auto max-w-7xl px-6 py-12">
+          <div className="mx-auto max-w-4xl px-6 py-12">
             <div className="flex flex-col items-center justify-center text-center">
               <WordRotate
                 className="text-6xl font-bold"
@@ -172,12 +167,13 @@ export default function LandingPage() {
       </section>
 
       <section id="how-it-works" className="relative py-4">
-        <div className="relative mx-auto max-w-7xl px-6">
+        <div className="relative mx-auto max-w-5xl px-6">
           <FeatureSteps 
             features={features}
             title="How It Works"
             autoPlayInterval={4000}
-            imageHeight="h-[600px]"
+            imageHeight="h-[500px] md:h-[400px]"
+            className="md:[&_img]:!object-contain md:[&_.order-1]:!h-[400px]"
           />
         </div>
       </section>
@@ -186,14 +182,14 @@ export default function LandingPage() {
       {/* Features Section */}
       <section id="features" className="relative py-12">
         <AnimatedGridPattern className="absolute inset-0" />
-        <div className="relative mx-auto max-w-7xl px-6">
+        <div className="relative mx-auto max-w-4xl px-6">
           <TextAnimate
             className="text-center text-5xl font-bold"
             animation="blurInDown"
           >
             Why Choose Us?
           </TextAnimate>
-          <BentoGrid className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <BentoGrid className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 [&>*]:mb-8 md:[&>*]:mb-0">
             <BentoCard
               name="Map-Based Tracking"
               description="                          "
@@ -203,13 +199,13 @@ export default function LandingPage() {
                   <img 
                     src={mapgif}
                     alt="Map Icon"
-                    className="relative z-10 h-64 w-64 rounded-2xl opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    className="relative z-10 h-72 w-72 rounded-2xl opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
               }
               href="https://lostfound-ptpm.vercel.app/"
               cta="Try Now"
-              className="col-span-1"
+              className="col-span-1 min-h-[400px] mb-8 md:mb-0"
             />
             <BentoCard
               name="Secure Messaging"
@@ -217,7 +213,10 @@ export default function LandingPage() {
               Icon={BellIcon}
               background={
                 <div className="absolute inset-0 overflow-hidden">
-                  <AnimatedList delay={800} className="absolute right-2 top-4 h-[300px] w-full transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105">
+                  <AnimatedList 
+                    delay={800} 
+                    className="absolute right-2 top-4 h-[350px] w-full transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105"
+                  >
                     {notifications.map((item, idx) => (
                       <Notification {...item} key={idx} />
                     ))}
@@ -226,7 +225,7 @@ export default function LandingPage() {
               }
               href="https://lostfound-ptpm.vercel.app/"
               cta="Try Now"
-              className="col-span-1"
+              className="col-span-1 min-h-[400px] mb-8 md:mb-0"
             />
             <BentoCard
               name="Dashboard Management"
@@ -238,13 +237,13 @@ export default function LandingPage() {
                     src={dashboardImage}
                     alt="Dashboard Features"
                     className="relative z-10 w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 
-                      md:h-64 md:w-auto rounded-3xl"
+                      max-h-[300px] md:max-h-none md:h-72 md:w-auto rounded-3xl"
                   />
                 </div>
               }
               href="https://lostfound-ptpm.vercel.app/"
               cta="Try Now"
-              className="col-span-1"
+              className="col-span-1 min-h-[400px]"
             />
           </BentoGrid>
         </div>

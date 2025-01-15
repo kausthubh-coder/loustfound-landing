@@ -106,11 +106,11 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, y: 20 },
-      show: (delay: number) => ({
+      show: (i: number) => ({
         opacity: 1,
         y: 0,
         transition: {
-          delay,
+          delay: i * 0.1,
           duration: 0.3,
         },
       }),
@@ -144,7 +144,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
-      show: (delay: number) => ({
+      show: (_: number) => ({
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
@@ -170,7 +170,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)", y: -20 },
-      show: (delay: number) => ({
+      show: (_: number) => ({
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
@@ -186,11 +186,11 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { y: 20, opacity: 0 },
-      show: (delay: number) => ({
+      show: (i: number) => ({
         y: 0,
         opacity: 1,
         transition: {
-          delay,
+          delay: i * 0.1,
           duration: 0.3,
         },
       }),
@@ -278,11 +278,11 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { scale: 1.5, opacity: 0 },
-      show: (delay: number) => ({
+      show: (i: number) => ({
         scale: 1,
         opacity: 1,
         transition: {
-          delay,
+          delay: i * 0.1,
           duration: 0.3,
           scale: {
             type: "spring",

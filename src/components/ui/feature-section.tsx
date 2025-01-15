@@ -1,8 +1,7 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface Feature {
@@ -25,7 +24,7 @@ export function FeatureSteps({
   className,
   title = "How to get Started",
   autoPlayInterval = 3000,
-  imageHeight = "h-[400px]",
+  // imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
   const [currentFeature, setCurrentFeature] = useState(0)
   const [progress, setProgress] = useState(0)
@@ -104,13 +103,7 @@ export function FeatureSteps({
                       exit={{ y: -100, opacity: 0, rotateX: 20 }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                      <Image
-                        src={feature.image}
-                        alt={feature.step}
-                        className="w-full h-full object-cover transition-transform transform"
-                        width={1000}
-                        height={500}
-                      />
+                      <img src={feature.image} className="w-full h-full object-cover transition-transform transform rounded-lg" alt="" />
                       <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
                     </motion.div>
                   ),
